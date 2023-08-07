@@ -5,10 +5,11 @@ export const PaymentMethodOptionsContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
 
-  > p {
+  /* p {
+    color: ${({ theme }) => theme.colors['base-error']};
+    font-size: 0.875rem;
     grid-column: span 3;
-    color: ${({ theme }) => theme.colors['purple-dark']};
-  }
+  } */
 `
 
 export const PaymentMethodContainer = styled.div`
@@ -18,14 +19,10 @@ export const PaymentMethodContainer = styled.div`
     display: none;
   }
 
-  /* input:checked + label div {
+  input:checked + label div {
     background: ${({ theme }) => theme.colors['brand-purple-dark']};
-    border-color: ${({ theme }) => theme.colors['brand-purple-light']};
-
-    &:hover {
-      background: ${({ theme }) => theme.colors['brand-purple-dark']};
-    }
-  } */
+    color: ${({ theme }) => theme.colors['brand-purple']};
+  }
 `
 
 

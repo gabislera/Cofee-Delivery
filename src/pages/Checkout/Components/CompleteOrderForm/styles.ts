@@ -21,6 +21,12 @@ export const OrderSection = styled.div`
   border-radius: 6px;
   padding: 40px;
   max-width: 640px;
+
+  p {
+    color: ${({ theme }) => theme.colors['base-error']};
+    font-size: 0.875rem;
+    margin-top: -20px;
+  }
 `
 
 export const SectionTitle = styled.div`
@@ -56,13 +62,6 @@ export const AddressContainer = styled.div`
   grid-template-columns: 12.5rem 17.5rem 3.75rem;
   column-gap: 0.75rem;
   row-gap: 1rem;
-
-  input {
-    padding: 12px;
-    background: ${({ theme }) => theme.colors['base-input']};
-    border: 1px solid ${({ theme }) => theme.colors['base-button']};
-    border-radius: 4px;
-  }
 
   #cep {
     grid-column: span 3;

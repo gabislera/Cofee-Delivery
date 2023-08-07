@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { SelectedProductCard } from "../SelectedProductCard";
 import { ConfirmSection, SelectedProductsContainer, SelectedProductsSection } from "./styles";
 
@@ -25,9 +24,7 @@ export function SelectedProducts() {
             <h2>R$ 33,20</h2>
           </div>
 
-          <NavLink to='/success'>
-            <button>CONFIRMAR PEDIDO</button>
-          </NavLink>
+          <button type="submit">CONFIRMAR PEDIDO</button>
         </ConfirmSection>
 
       </SelectedProductsSection>

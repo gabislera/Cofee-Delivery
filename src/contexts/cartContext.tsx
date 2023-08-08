@@ -76,8 +76,6 @@ export function CartProvider({ children }: CartProviderProps) {
       })
       setCart(updatedCart)
     }
-    // const productQuantityFilter = cart.filter(item => item.id === product.id)
-    // setProductQuantity(productQuantityFilter)
   }
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, changeQtyCart }}>

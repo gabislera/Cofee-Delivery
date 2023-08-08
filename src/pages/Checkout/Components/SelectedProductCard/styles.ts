@@ -63,9 +63,25 @@ export const AddToCartQtd = styled.div`
   }
 
   > button {
+    padding: 8px;
+      background: ${({ theme }) => theme.colors['brand-purple']};
+      border-radius: 6px;
       border: none;
-      color: ${({ theme }) => theme.colors['brand-purple']};
-      background: ${({ theme }) => theme.colors['base-button']};
+      color: ${({ theme }) => theme.colors['brand-white']};
+
+      &:disabled {
+        background: ${({ theme }) => theme.colors['brand-purple-dark']};
+        cursor: not-allowed;
+      }
+
+      &:disabled(:hover) {
+        background: ${({ theme }) => theme.colors['brand-purple-dark']};
+      }
+      
+      svg {
+        color: ${({ theme }) => theme.colors['base-white']};
+      }
+    }
   }
   `
 

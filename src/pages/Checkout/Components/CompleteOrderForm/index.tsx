@@ -11,8 +11,6 @@ export function CompleteOrderForm() {
   const { register, formState } = useFormContext()
   const { errors } = formState
 
-  console.log(errors.cep) // arrumar
-
   return (
     <CompleteOrderContainer >
       <h1>Complete seu pedido</h1>
@@ -35,7 +33,7 @@ export function CompleteOrderForm() {
           <TextInput id="city" placeholder="Cidade" {...register('city')} error={errors.city} />
           <TextInput id="uf" placeholder="UF" {...register('uf')} error={errors.uf} />
         </AddressContainer>
-        {errors.cep && <p>Revise os campos em vermelho</p>}
+        {Object.keys(errors).length === 0 ? null : <p>Revise os campos em vermelho</p>}
       </OrderSection>
 
       <OrderSection>

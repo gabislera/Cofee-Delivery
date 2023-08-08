@@ -2,9 +2,11 @@ import logo from '../../assets/logo.svg'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 import { CartButton, HeaderContainer, LocationContainer } from './styles'
 import { NavLink } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export function Header() {
-  const cartQuantity = 3
+  const { cart } = useCart()
+  const cartQuantity = cart.length
 
   return (
     <HeaderContainer>

@@ -1,14 +1,18 @@
+import { useCart } from "../../../../hooks/useCart";
 import { SelectedProductCard } from "../SelectedProductCard";
 import { ConfirmSection, SelectedProductsContainer, SelectedProductsSection } from "./styles";
 
 export function SelectedProducts() {
+  const { cart } = useCart()
+
   return (
     <SelectedProductsContainer>
       <h1>Cafés selecionados</h1>
 
       <SelectedProductsSection>
-        <SelectedProductCard />
-        <SelectedProductCard />
+        {
+          cart.map((product, index) => <SelectedProductCard key={index} data={product} />) // key = id
+        }
 
         <ConfirmSection>
           <div>
@@ -26,7 +30,6 @@ export function SelectedProducts() {
 
           <button type="submit">CONFIRMAR PEDIDO</button>
         </ConfirmSection>
-
       </SelectedProductsSection>
     </SelectedProductsContainer>
   )

@@ -1,25 +1,14 @@
-import { Minus, Plus, ShoppingCart } from "@phosphor-icons/react";
-import { AddToCartQtd, ProductCardContainer, ProductFooter, ProductTags } from "./styled";
+import { ProductCardContainer, ProductFooter, ProductTags } from "./styled";
 import { useEffect, useState } from "react";
 import { api } from "../../../../services/api";
+import { AddToCartQtd } from "../../../../components/AddToCartQtd";
+import { CartProps } from '../../../../contexts/cartContext'
 
-interface Tags {
-  name: string
-}
-
-interface DataProps {
-  id: number
-  name: string
-  description: string
-  category: string
-  price: number
-  image: string
-  ingredients?: Tags[]
-}
-
-export function ProductCard({ data }: { data: DataProps }) {
+export function ProductCard({ data }: { data: CartProps }) {
   const imageUrl = `${api.defaults.baseURL}/files/${data.image}`
-  const [tags, setTags] = useState<DataProps>()
+  const [tags, setTags] = useState<CartProps>()
+  const [quantity, setQuantity] = useState<number>(0)
+
 
   useEffect(() => {
     async function fetchProduct() {
@@ -28,6 +17,14 @@ export function ProductCard({ data }: { data: DataProps }) {
     }
     fetchProduct();
   }, [data.id]);
+
+  function handleIncreaseQty() {
+    setQuantity(prevstate => prevstate + 1)
+  }
+
+  function handleDecreaseQty() {
+    if (quantity > 0) setQuantity(prevstate => prevstate - 1)
+  }
 
   return (
     <ProductCardContainer>
@@ -46,17 +43,11 @@ export function ProductCard({ data }: { data: DataProps }) {
       <ProductFooter>
         <span>R$<strong>{data.price}</strong></span>
 
-        <AddToCartQtd>
-          <div>
-            <button><Minus size={14} /></button>
-            <span>1</span>
-            <button><Plus size={14} /></button>
-          </div>
-
-          <button>
-            <ShoppingCart size={22} weight='fill' />
-          </button>
-        </AddToCartQtd>
+        <AddToCartQtd
+          data={data}
+          quantity={quantity}
+          onIncrease={handleIncreaseQty}
+          onDecrease={handleDecreaseQty} />
       </ProductFooter>
     </ProductCardContainer>
   )

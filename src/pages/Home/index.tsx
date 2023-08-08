@@ -6,18 +6,12 @@ import { useEffect, useState } from 'react'
 import { api } from '../../services/api'
 import { Main } from './components/Main'
 import { ProductCard } from './components/ProductCard'
+import { CartProps } from '../../contexts/cartContext'
 
-interface ProductProps {
-  id: number
-  name: string
-  description: string
-  category: string
-  price: number
-  image: string
-}
+
 
 export function Home() {
-  const [products, setProducts] = useState<ProductProps[]>([])
+  const [products, setProducts] = useState<CartProps[]>([])
   const search = ''
 
   useEffect(() => {

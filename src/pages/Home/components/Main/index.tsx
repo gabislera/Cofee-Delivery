@@ -13,25 +13,25 @@ export function Main() {
         </span>
 
         <IconsSection>
-          <Icon variant="orange">
+          <Icon $variant="orange">
             <span>
               <ShoppingCart size={16} weight="fill" />
             </span>
             <strong>Compra simples e segura</strong>
           </Icon>
-          <Icon variant="grey">
+          <Icon $variant="grey">
             <span>
               <Package size={16} weight="fill" />
             </span>
             <strong>Embalagem mantém o café intacto</strong>
           </Icon>
-          <Icon variant="yellow">
+          <Icon $variant="yellow">
             <span>
               <Timer size={16} weight="fill" />
             </span>
             <strong>Entrega rápida e rastreada</strong>
           </Icon>
-          <Icon variant="purple">
+          <Icon $variant="purple">
             <span>
               <Coffee size={16} weight="fill" />
             </span>

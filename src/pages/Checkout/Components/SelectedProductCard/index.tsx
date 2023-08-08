@@ -1,31 +1,39 @@
-import { Minus, Plus, Trash } from "@phosphor-icons/react";
-import { AddToCartQtd, DetailsSection, RemoveButton, SelectedProductContainer } from "./styles";
-import teste from '../../../../assets/Image.png'
+import { DetailsSection, SelectedProductContainer } from "./styles";
+import { api } from "../../../../services/api";
+import { AddToCartQtd } from "../../../../components/AddToCartQtd";
+import { CartProps } from '../../../../contexts/cartContext'
+import { useState } from "react";
+import { useCart } from "../../../../hooks/useCart";
 
-export function SelectedProductCard() {
+interface CartProduct {
+  data: CartProps
+}
+
+export function SelectedProductCard({ data }: CartProduct) {
+  const imageUrl = `${api.defaults.baseURL}/files/${data.image}`
+  const [quantity, setQuantity] = useState<number>(0)
+  const { changeQtyCart } = useCart()
+
+  function handleIncreaseQty() {
+    changeQtyCart(data, 'increase')
+  }
+
+  function handleDecreaseQty() {
+    changeQtyCart(data, 'decrease')
+  }
+
   return (
     <SelectedProductContainer>
       <div>
-        <img src={teste} alt="" />
+        <img src={imageUrl} alt="" />
         <DetailsSection>
-          <strong>Expresso Tradicional</strong>
+          <strong>{data.name}</strong>
 
-          <div>
-            <AddToCartQtd>
-              <button><Minus size={14} /></button>
-              <span>1</span>
-              <button><Plus size={14} /></button>
-            </AddToCartQtd>
-
-            <RemoveButton>
-              <Trash size={16} />
-              <span>REMOVER</span>
-            </RemoveButton>
-          </div>
+          <AddToCartQtd data={data} isCart onIncrease={handleIncreaseQty} onDecrease={handleDecreaseQty} quantity={data.quantity} />
         </DetailsSection>
       </div>
 
-      <strong>R$ 9,90</strong>
+      <strong>{data.price}</strong>
     </SelectedProductContainer>
   )
 }

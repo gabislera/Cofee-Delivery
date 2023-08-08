@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export type IconBgVariant = 'orange' | 'yellow' | 'grey' | 'purple'
 
 interface IconProps {
-  variant: IconBgVariant
+  $variant: IconBgVariant
 }
 
 const iconBgVariants = {
@@ -70,7 +70,7 @@ export const Icon = styled.div<IconProps>`
 
     ${(props) => {
     return css`
-        background-color: ${iconBgVariants[props.variant]};
+        background-color: ${iconBgVariants[props.$variant]};
       `
   }}
   }

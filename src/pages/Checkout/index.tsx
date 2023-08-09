@@ -4,6 +4,8 @@ import { SelectedProducts } from "./Components/SelectedProducts";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from "react-hook-form";
 import * as zod from 'zod'
+import { useCart } from "../../hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 // enum PaymentMethods {
 //   credit = 'credit',
@@ -29,17 +31,27 @@ const orderFormValidationSchema = zod.object({
   paymentMethod: zod.enum(PaymentMethods),
 })
 
-type orderFormData = zod.infer<typeof orderFormValidationSchema>
+export type orderFormData = zod.infer<typeof orderFormValidationSchema>
 
 export function Checkout() {
   const orderForm = useForm<orderFormData>({
     resolver: zodResolver(orderFormValidationSchema),
   })
 
-  const { handleSubmit } = orderForm
+  const { handleSubmit, reset } = orderForm
+  const { clearCart, cart, addUserOrder } = useCart()
+  const navigate = useNavigate()
 
   function handleOrderForm(data: orderFormData) {
-    console.log('teste', data)
+    const userCart = {
+      data,
+      cart
+    }
+    // console.log(userCart)
+    addUserOrder(userCart)
+    clearCart()
+    reset()
+    navigate('/success')
   }
 
   return (

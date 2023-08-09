@@ -15,14 +15,19 @@ export const AddToCartQtdContainer = styled.div`
     border-radius: 6px;
 
     > span {
-      font-size: 1.2rem;
-      color: ${({ theme }) => theme.colors['base-title']};
+        font-size: 1.2rem;
+        color: ${({ theme }) => theme.colors['base-title']};
     }
 
     > button {
-      border: none;
-      color: ${({ theme }) => theme.colors['brand-purple']};
-      background: ${({ theme }) => theme.colors['base-button']};
+        border: none;
+        color: ${({ theme }) => theme.colors['brand-purple']};
+        background: ${({ theme }) => theme.colors['base-button']};
+
+      &:hover {
+        background: transparent;
+        color: ${({ theme }) => theme.colors['brand-purple-dark']};
+      }
     }
   }
   `

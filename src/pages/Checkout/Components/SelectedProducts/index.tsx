@@ -4,6 +4,25 @@ import { ConfirmSection, SelectedProductsContainer, SelectedProductsSection } fr
 
 export function SelectedProducts() {
   const { cart } = useCart()
+  const deliveryPrice = 3.50
+
+  const totalPrice = cart.reduce((acc, item) => {
+    const quantity = item.quantity
+    const price = parseFloat(item.price.replace(',', '.'))
+
+    return acc + (price * quantity)
+  }, 0)
+
+  function formatMoney(value: number) {
+    const formated = value.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+    })
+    return formated
+  }
+
+  const formattedTotalItemsPrice = formatMoney(totalPrice)
+  const formattedDeliveryPrice = formatMoney(deliveryPrice)
+  const formattedTotalPrice = formatMoney(totalPrice + deliveryPrice)
 
   return (
     <SelectedProductsContainer>
@@ -17,15 +36,15 @@ export function SelectedProducts() {
         <ConfirmSection>
           <div>
             <span>Total de itens</span>
-            <strong>R$ 29,70</strong>
+            <strong>R$ {formattedTotalItemsPrice}</strong>
           </div>
           <div>
             <span>Entrega</span>
-            <strong>R$ 3,50</strong>
+            <strong>R$ {formattedDeliveryPrice}</strong>
           </div>
           <div>
             <h2>Total</h2>
-            <h2>R$ 33,20</h2>
+            <h2>R$ {formattedTotalPrice}</h2>
           </div>
 
           <button type="submit">CONFIRMAR PEDIDO</button>

@@ -8,8 +8,6 @@ import { Main } from './components/Main'
 import { ProductCard } from './components/ProductCard'
 import { CartProps } from '../../contexts/cartContext'
 
-
-
 export function Home() {
   const [products, setProducts] = useState<CartProps[]>([])
   const search = ''

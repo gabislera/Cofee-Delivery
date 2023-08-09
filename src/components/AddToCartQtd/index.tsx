@@ -28,10 +28,12 @@ export function AddToCartQtd({ data, isCart, onIncrease, onDecrease, quantity }:
     removeFromCart(data)
   }
 
+  const disabledIfQuantityNegative = quantity <= 0
+
   return (
     <AddToCartQtdContainer>
       <div>
-        <button type="button" onClick={onDecrease}><Minus size={14} /></button>
+        <button disabled={disabledIfQuantityNegative} type="button" onClick={onDecrease}><Minus size={14} /></button>
         <span>{quantity}</span>
         <button type="button" onClick={onIncrease}><Plus size={14} /></button>
       </div>

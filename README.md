@@ -3,8 +3,8 @@
 
 # Cofee delivery
 
-A cofee delivery website where you can select the amount of itens that you want and add to the cart. In the checkout page you must fill the address form and select the payment method for the submit to work.
-(responsivity in progress)
+'A cofee delivery website where you can select the amount of itens that you want and add to the cart. In the checkout page you must fill the address form and select the payment method for the submit to work.
+(responsivity in progress)'
 
 
 ## Functionalities

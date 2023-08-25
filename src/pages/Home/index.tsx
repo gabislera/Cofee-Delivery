@@ -7,6 +7,7 @@ import { api } from '../../services/api'
 import { Main } from './components/Main'
 import { ProductCard } from './components/ProductCard'
 import { CartProps } from '../../contexts/cartContext'
+import { Skeleton } from './components/Skeleton'
 
 export function Home() {
   const [products, setProducts] = useState<CartProps[]>([])
@@ -30,11 +31,20 @@ export function Home() {
       <ProductsContainer>
         <strong>Nossos cafés</strong>
         <ProductsSection>
-          {
+
+          {products.length === 0 ? (
+            <Skeleton />
+          ) : (
             filteredProducts.map(product => (
               <ProductCard key={product.id} data={product} />
             ))
-          }
+          )}
+
+          {/* {
+            filteredProducts.map(product => (
+              <ProductCard key={product.id} data={product} />
+            ))
+          } */}
         </ProductsSection>
       </ProductsContainer>
     </HomeContainer>
